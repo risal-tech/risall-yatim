@@ -112,6 +112,53 @@ async function createQRIS(amount, codeqr) {
     }
 }
 
+async function transferToEwallet(amount, ewalletNumber, apiKey, merchantId) {
+    try {
+        // Validasi parameter
+        if (!amount || !ewalletNumber || !apiKey || !merchantId) {
+            throw new Error("Semua parameter wajib diisi (amount, ewalletNumber, apiKey, merchantId)");
+        }
+
+        // Endpoint API Orkut untuk transfer e-wallet
+        const url = `https://nabzxganteng.my.id/api/orkut/transferwallet`;
+
+        // Data yang akan dikirim ke API
+        const bodyData = {
+            apikey: apiKey,
+            merchant: merchantId,
+            amount: amount.toString(),
+            phone: ewalletNumber
+        };
+
+        // Mengirim permintaan ke API
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(bodyData)
+        });
+
+        // Parsing hasil respons
+        const result = await response.json();
+
+        // Cek status respons
+        if (result.status === "success") {
+            return {
+                transactionId: result.result.transactionId,
+                amount: result.result.amount,
+                ewalletNumber: result.result.phone,
+                message: "Transfer berhasil"
+            };
+        } else {
+            throw new Error(result.message || "Transfer gagal. Coba lagi nanti.");
+        }
+    } catch (error) {
+        console.error("Error during transfer to e-wallet:", error);
+        throw error;
+    }
+}
+
 async function checkQRISStatus() {
     try {
         const apiUrl = `https://gateway.okeconnect.com/api/mutasi/qris/isi pakai merchant orkut/apikey orkut`;
@@ -140,6 +187,7 @@ module.exports = {
     generateTransactionId,
     generateExpirationTime,
     elxyzFile,
+    transferToEwallet, 
     generateQRIS,
     createQRIS,
     checkQRISStatus
