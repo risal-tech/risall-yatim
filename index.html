@@ -10,19 +10,18 @@
             background-color: #121212;
             color: #ffffff;
             font-family: 'Roboto', sans-serif;
-            font-weight: 700; /* Bold font */
+            font-weight: 700;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         .container {
             padding: 20px;
-            
+            display: none; /* Default: hidden until key is validated */
         }
         .header {
             text-align: center;
             margin-top: 30px;
-            
         }
         .header h1 {
             font-size: 2.7rem;
@@ -66,9 +65,8 @@
             border-radius: 5px;
             margin: 8px 20px;
         }
-        
         .api-item span {
-          font-size: 15px;
+            font-size: 15px;
         }
         .api-item .method {
             color: #1e90ff;
@@ -84,8 +82,8 @@
             cursor: pointer;
         }
         .api-item .try-btn a {
-          text-decoration: none;
-          color: #fff;
+            text-decoration: none;
+            color: #fff;
         }
         .footer {
             text-align: center;
@@ -139,68 +137,28 @@
                 <button class="try-btn"><a href="https://nabzxganteng.my.id/api/orkut/cekstatus?apikey=&merchant=&keyorkut=">TRY</a></button>
             </div>
         </div>
-        <div class="section">
-            <h2>Downloader</h2>
-            <div class="api-item">
-                <span class="method">GET</span>
-                <span>TikTok</span>
-                <button class="try-btn"><a href="https://nabzxganteng.my.id/api/downloader/tiktokdl?url=">TRY</a></button>
-            </div>
-            <div class="api-item">
-                <span class="method">GET</span>
-                <span>Instagram</span>
-                <button class="try-btn"><a href="https://nabzxganteng.my.id/api/downloader/igdl?url=">TRY</a></button>
-            </div>
-            <div class="api-item">
-                <span class="method">GET</span>
-                <span>Facebook</span>
-                <button class="try-btn"><a href="https://nabzxganteng.my.id/api/downloader/fbdl?url=">TRY</a></button>
-            </div>            
-            <div class="api-item">
-                <span class="method">GET</span>
-                <span>YTMP3</span>
-                <button class="try-btn"><a href="https://nabzxganteng.my.id/api/downloader/ytmp3?url=">TRY</a></button>
-            </div>
-            <div class="api-item">
-                <span class="method">GET</span>
-                <span>YTMP4</span>
-                <button class="try-btn"><a href="https://nabzxganteng.my.id/api/downloader/ytmp4?url=">TRY</a></button>
-            </div>            
+        <!-- More sections here -->
+        <div class="footer">
+            &copy; 2023 nabzxhost. All rights reserved.
         </div>
-        <div class="section">
-            <h2>Tools OpenAI</h2>
-            <div class="api-item">
-                <span class="method">GET</span>
-                <span>OpenAi</span>
-                <button class="try-btn"><a href="https://nabzxganteng.my.id/api/tools/openai?prompt=sekarang kamu adalah Nabzx-AI&msg=">TRY</a></button>
-            </div>
-            <div class="api-item">
-                <span class="method">GET</span>
-                <span>GPT</span>
-                <button class="try-btn"><a href="https://nabzxganteng.my.id/api/tools/gptchat1?text=">TRY</a></button>
-            </div>
-            <div class="api-item">
-                <span class="method">GET</span>
-                <span>Gemini</span>
-                <button class="try-btn"><a href="https://nabzxganteng.my.id/api/tools/gemini?text=">TRY</a></button>
-            </div>   
-              <div class="api-item">
-                <span class="method">GET</span>
-                <span>Remini</span>
-                <button class="try-btn"><a href="https://nabzxganteng.my.id/api/tools/remini?url=">TRY</a></button>
-            </div>         
-        </div> 
-        <div class="section">
-            <h2>Canvas Creator</h2>
-            <div class="api-item">
-                <span class="method">GET</span>
-                <span>Brat</span>
-                <button class="try-btn"><a href="https://nabzxganteng.my.id/api/canvas/brat?text=">TRY</a></button>
-            </div>
-        </div>       
     </div>
-    <div class="footer">
-        &copy; 2023 nabzxhost. All rights reserved.
-    </div>
+    <script>
+        // Hardcoded key for demonstration (replace with your logic)
+        const validKey = "NabzxDev";
+
+        // Function to validate the key
+        function validateKey() {
+            const userKey = prompt("Please enter your access key:");
+            if (userKey === validKey) {
+                document.querySelector(".container").style.display = "block"; // Show the content
+            } else {
+                alert("Invalid key. Access denied.");
+                document.body.innerHTML = "<h1 style='text-align:center; color:red;'>Access Denied</h1>";
+            }
+        }
+
+        // Ask for the key on page load
+        window.onload = validateKey;
+    </script>
 </body>
 </html>
