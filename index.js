@@ -14,6 +14,7 @@ const { groq } = require('./public/openai.js')
 const { YtMp3, YtMp4 } = require('./public/youtube.js') 
 const { fbdl } = require('./public/facebook.js') 
 const { remini } = require('./public/remini.js')
+const { getChatResponse, generateImage } = require("./public/createimage.js");
 const { igdl } = require('./public/instagram.js') 
 const { brat } = require('./public/brat.js') 
 const { chatbot } = require('./public/gpt.js')
@@ -91,7 +92,10 @@ app.get('/', (req, res) => {
   console.log("Client : " + ip)
   res.sendFile(path.join(__dirname, 'index.html'));
 })
-
+app.get("/api/ai/chat", async (req, res) => {
+    const { prompt } = req.query;
+    if (!prompt) return res.json("Isi Parameternya!");
+    
 app.get("/api/tools/openai", async (req, res) => {
     const { prompt, msg } = req.query;
     if (!prompt || !msg) return res.json("Isi Parameternya!");
