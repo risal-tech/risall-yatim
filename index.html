@@ -1,131 +1,170 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Docs - Nabzx API</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        /* Variabel untuk Background */
+        :root {
+            --background-url: url('https://img86.pixhost.to/images/562/564186179_skyzopedia.jpg');
+        }
+
         body {
-            background-color: #121212;
+            background: var(--background-url) no-repeat center center fixed;
+            background-size: cover;
             color: #ffffff;
             font-family: 'Roboto', sans-serif;
-            font-weight: 700; /* Bold font */
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            transition: background 0.5s ease-in-out;
         }
+
+        /* Overlay */
+        .overlay {
+            background: rgba(0, 0, 0, 0.7);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
         .container {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: auto;
             padding: 20px;
-            
-        }
-        .header {
             text-align: center;
-            margin-top: 30px;
-            
         }
+
         .header h1 {
             font-size: 2.7rem;
-            margin: 0;
+            margin: 20px 0 10px;
         }
+
         .header h1 span {
             color: #1e90ff;
         }
-        .header p {
-            margin: 5px 0;
-            color: #ffff;
-            font-size: 16px;
-        }
+
         .links {
-            text-align: left;
-            margin: 40px 20px;
+            margin: 30px 0;
+            text-align: center;
         }
+
         .links a {
             color: #1e90ff;
-            font-size: 12px;
-            letter-spacing: 1px;
             text-decoration: none;
-            display: block;
-            margin: 5px 0;
+            font-size: 14px;
+            display: inline-block;
+            margin: 5px 15px;
         }
+
         .section {
-            margin: 0 0 40px 0;
+            background: rgba(30, 30, 30, 0.8);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
+
         .section h2 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            text-align: center;
-            font-weight: 700;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
         }
+
         .api-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #1e1e1e;
-            padding: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px;
             border-radius: 5px;
-            margin: 8px 20px;
+            margin: 8px 0;
+            transition: 0.3s;
         }
-        
-        .api-item span {
-          font-size: 15px;
+
+        .api-item:hover {
+            background-color: rgba(255, 255, 255, 0.2);
         }
+
         .api-item .method {
             color: #1e90ff;
-            font-weight: 700;
-            font-size: 15px;
+            font-weight: bold;
         }
+
         .api-item .try-btn {
-            background-color: #1e90ff;
+            background: #1e90ff;
+            color: #ffffff;
+            padding: 8px 12px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .api-item .try-btn:hover {
+            background: #1565c0;
+        }
+
+        /* Tombol Ganti Background */
+        .change-bg-btn {
+            background: #ff9800;
             color: #ffffff;
             border: none;
-            padding: 10px 15px;
+            padding: 12px 18px;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 20px;
+            transition: 0.3s;
         }
-        .api-item .try-btn a {
-          text-decoration: none;
-          color: #fff;
+
+        .change-bg-btn:hover {
+            background: #e68900;
         }
+
         .footer {
             text-align: center;
-            margin-top: 20px;
-            margin-bottom: 50px;
-            background-color: none;
-            color: #888888;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #ccc;
         }
-        @media (min-width: 768px) {
+
+        @media (max-width: 768px) {
             .container {
-                max-width: 800px;
-                margin: 0 auto;
-            }
-            .header h1 {
-                font-size: 2.5em;
-            }
-            .section h2 {
-                font-size: 2em;
+                width: 90%;
             }
             .api-item {
+                flex-direction: column;
+                text-align: center;
                 padding: 15px;
             }
             .api-item .try-btn {
-                padding: 10px 15px;
+                margin-top: 5px;
             }
         }
     </style>
 </head>
 <body>
+    <div class="overlay"></div>
     <div class="container">
         <div class="header">
             <h1>Nabzx <span>API</span></h1>
             <p>Powered by Nabzx &lt;\&gt;</p>
         </div>
+
+        <!-- Tombol untuk Mengganti Background -->
+        <button class="change-bg-btn" onclick="changeBackground()">Ganti Background</button>
+
         <div class="links">
-            <a href="https://whatsapp.com/channel/0029Vag5c53KAwEk4hnzN220"> Channel WhatsApp</a>
-            <a href="wa.me/6285783089587" class="fas fa-paperclip"> Development</a>
-            <a href="https://wa.me/6282178006414" class="fas fa-paperclip"> Contact Developer V2</a>
+            <a href="https://whatsapp.com/channel/0029Vag5c53KAwEk4hnzN220"><i class="fas fa-comments"></i> Channel WhatsApp</a>
+            <a href="https://wa.me/6285783089587"><i class="fas fa-paperclip"></i> Development</a>
+            <a href="https://wa.me/6282178006414"><i class="fas fa-user"></i> Contact Developer V2</a>
         </div>
-  
+
         <div class="section">
             <h2>Orderkuota Gateway</h2>
             <div class="api-item">
@@ -212,8 +251,23 @@
             </div>
         </div>       
     </div>
-    <div class="footer">
-        &copy; 2023 nabzxhost. All rights reserved.
+
+        <div class="footer">
+            &copy; 2023 NabzxHost. All rights reserved.
+        </div>
     </div>
+
+    <script>
+        let backgroundToggle = false;
+
+        function changeBackground() {
+            if (backgroundToggle) {
+                document.documentElement.style.setProperty('--background-url', "url('https://img86.pixhost.to/images/562/564186179_skyzopedia.jpg')");
+            } else {
+                document.documentElement.style.setProperty('--background-url', "url('https://img86.pixhost.to/images/562/564186592_skyzopedia.jpg')");
+            }
+            backgroundToggle = !backgroundToggle;
+        }
+    </script>
 </body>
 </html>
