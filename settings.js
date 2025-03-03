@@ -1,3 +1,3 @@
 
-global.creator = "NabzxHost"
-global.apikey = ["NabzxDev", "Nabzx123"]
+global.creator = "Sall"
+global.apikey = ["Sall", "Sall123"]
